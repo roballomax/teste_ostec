@@ -6,14 +6,15 @@ $uri_dashs = explode('/', $uri);
 $controller = 'HomeController';
 $action = 'indexAction';
 
-if(count($uri_dashs[1]) > 1){ // seta o controlador caso tenha na url
+if(strlen($uri_dashs[1]) > 1){ // seta o controlador caso tenha na url
     $controller = ucfirst($uri_dashs[1]) . "Controller";
 }
-if(count($uri_dashs) > 2){ // seta a action caso tenha na url
+if(strlen($uri_dashs) > 2){ // seta a action caso tenha na url
     $action = $uri_dashs[2] . "Action";
 }
-$controller = new $controller(); //chama o controlador
 
+$controller = new $controller(); //chama o controlador
+?>
 
 <!DOCTYPE html>
 <html lang="en">
