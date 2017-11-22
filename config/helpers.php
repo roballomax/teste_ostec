@@ -2,6 +2,10 @@
 
 class Helpers {
 
+    public static function get_url_parameter($parameter_name){
+        return $_SESSION['uri']['parameters'][$parameter_name];
+    }
+
     public static function redirect($controller, $action, $parameters = []){
         $parameters_url = "";
         if(count($parameters) > 0) {
@@ -46,6 +50,11 @@ class Helpers {
 
     public static function validate_string($string){
         return  addslashes(strip_tags($string));
+    }
+    
+
+    public static function validate_integer($integer){
+        return  ((int) $integer);
     }
     
 

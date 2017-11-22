@@ -56,6 +56,23 @@ if(strlen($uri_dashs[2]) > 1){ // seta a action caso tenha na url
 $_SESSION['uri']['host'] = "http://" . $_SERVER['HTTP_HOST'];
 $_SESSION['uri']['controller'] = $controller;
 $_SESSION['uri']['action'] = $action;
+$_SESSION['uri']['parameters'] = [];
+
+if(count($uri_dashs) > 3){
+    
+    array_shift($uri_dashs);
+    array_shift($uri_dashs);
+    array_shift($uri_dashs);
+    $parameter_name = "";
+
+    foreach($uri_dashs as $parameter_key => $parameter_value){
+        if(($parameter_key % 2) == 0)
+            $parameter_name = $parameter_value;
+        else
+            $_SESSION['uri']['parameters'][$parameter_name] = $parameter_value;
+    }
+
+}
 
 $controller = new $controller(); //chama o controlador
 

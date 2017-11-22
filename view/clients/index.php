@@ -19,8 +19,8 @@
                     <td><?php echo $client['id']; ?></td>
                     <td><?php echo $client['nome']; ?></td>
                     <td><?php echo $client['endereco']; ?></td>
-                    <td><a href='client/edit/<?php echo $client['id']; ?>'>Atualizar</a></td>
-                    <td><a href='client/destroy/<?php echo $client['id']; ?>'>Excluir</a></td>
+                    <td><a href='/client/edit/id/<?php echo $client['id']; ?>'>Atualizar</a></td>
+                    <td><a href='/client/destroy/id/<?php echo $client['id']; ?>'>Excluir</a></td>
                 </tr>
         <?php
             }
