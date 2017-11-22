@@ -1,21 +1,3 @@
-<?php 
-//separa as barras da url para selecionar controlador e action
-$uri = $_SERVER['REQUEST_URI'];
-$uri_dashs = explode('/', $uri);
-//seta o controlador e action default
-$controller = 'HomeController';
-$action = 'indexAction';
-
-if(strlen($uri_dashs[1]) > 1){ // seta o controlador caso tenha na url
-    $controller = ucfirst($uri_dashs[1]) . "Controller";
-}
-if(strlen($uri_dashs[2]) > 1){ // seta a action caso tenha na url
-    $action = $uri_dashs[2] . "Action";
-}
-
-$controller = new $controller(); //chama o controlador
-?>
-
 <!DOCTYPE html>
 <html lang="en">
     <head>

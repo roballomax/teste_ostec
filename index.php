@@ -35,5 +35,29 @@ function __autoload($className){
         die;
     }
 }
+
+session_start();
+
+//separa as barras da url para selecionar controlador e action
+$uri = $_SERVER['REQUEST_URI'];
+
+$uri_dashs = explode('/', $uri);
+//seta o controlador e action default
+$controller = 'HomeController';
+$action = 'indexAction';
+
+if(strlen($uri_dashs[1]) > 1){ // seta o controlador caso tenha na url
+    $controller = ucfirst($uri_dashs[1]) . "Controller";
+}
+if(strlen($uri_dashs[2]) > 1){ // seta a action caso tenha na url
+    $action = $uri_dashs[2] . "Action";
+}
+
+$_SESSION['uri']['host'] = "http://" . $_SERVER['HTTP_HOST'];
+$_SESSION['uri']['controller'] = $controller;
+$_SESSION['uri']['action'] = $action;
+
+$controller = new $controller(); //chama o controlador
+
 //caso encontre a classe, ele retorna o layout do site
 require_once('view/layout/site.php');

@@ -8,15 +8,15 @@ class Database {
     public function getConnection(){
         return $this->db;
     }
-    public function executeSql($sql, $params){
-        $counter = 0;
-        $query = self::getConnection()->prepare($sql);
-        
-        if(count($params) > 0) foreach($params as $param) {
-            $query->bindParam(++$counter, $param);
-        }
 
+    public function executeSql($sql, $params){
+        $query = self::getConnection()->prepare($sql);
+
+        if(count($params) > 0) foreach($params as $param_name => $param) {
+            $query->bindValue($param_name, $param);
+        }
         $query->execute();
+       
         return $query;
     }
 }
