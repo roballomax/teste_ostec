@@ -15,6 +15,8 @@ class Database {
         if(count($params) > 0) foreach($params as $param) {
             $query->bindParam(++$counter, $param);
         }
+
         $query->execute();
+        return $query;
     }
 }

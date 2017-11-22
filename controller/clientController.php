@@ -3,16 +3,26 @@
 class ClientController Extends Controller{
 
     public function __construct(){
-        $this->page_title = "Home";
+        $this->page_title = "Clientes";
     }
 
     public function indexAction() {
+        $model = new ClientModel();
         
         return self::view_render('clients', 'index', [
-            'teste1' => 1,
-            'teste2' => "hue",
-            'teste3' => "1br",
+            'clients' => $model->get_clients()
         ]);
+    }
+
+    public function addAction(){
+        $model = new ClientModel();
+        return self::view_render('clients', 'add', []);
+    }
+
+    public function createAction(){
+        if(!empty($_POST)){
+            var_dump($_POST);
+        }
     }
 
 }
