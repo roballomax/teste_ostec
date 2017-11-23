@@ -13,7 +13,7 @@
     </thead>
     <tbody>
         <?php
-            foreach ($clients as $client) {
+            if(count($clients) > 0) foreach ($clients as $client) {
         ?>
                 <tr>
                     <td><?php echo $client['id']; ?></td>

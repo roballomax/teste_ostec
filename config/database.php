@@ -11,7 +11,7 @@ class Database {
 
     public function executeSql($sql, $params){
         $query = self::getConnection()->prepare($sql);
-
+        
         if(count($params) > 0) foreach($params as $param_name => $param) {
             $query->bindValue($param_name, $param);
         }

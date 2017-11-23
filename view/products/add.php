@@ -1,19 +1,17 @@
 <?php 
-$id = Helpers::flash_data('id', '', true);
 $nome = Helpers::flash_data('nome', '', true);
-$endereco = Helpers::flash_data('endereco', '', true);
+$preco = Helpers::flash_data('preco', '', true);
 ?>
 
-<h1>Clientes - Edição</h1>
+<h1>Produtos - Cadastro</h1>
 <ul>
-    <li><a href="/client">Voltar</a></li>
+    <li><a href="/product">Voltar</a></li>
 </ul>
 
-<form action="/client/update" method="post">
-<input type="hidden" name="id" value="<?php echo (!is_null($id) ? $id : "") ?>" /> <br>
+<form action="/product/create" method="post">
 <input type="text" name="nome" placeholder="Nome" value="<?php echo (!is_null($nome) ? $nome : "") ?>" /> <br>
-<input type="text" name="endereco" placeholder="Endereço" value="<?php echo (!is_null($endereco) ? $endereco : "") ?>" /> <br>
-<input type="submit" value="Editar" />
+<input type="number" step="0.01" name="preco" placeholder="Preço" value="<?php echo (!is_null($preco) ? $preco : "") ?>" /> <br>
+<input type="submit" value="Cadastrar" />
 </form>
 
 <?php
@@ -28,7 +26,6 @@ if(!empty($error_form)){
         echo "<li>{$error_form}</li>";
     }
     echo "</ul>";
-
 }
 
 ?>

@@ -58,6 +58,15 @@ class Helpers {
     }
     
 
+    public static function number_format($number, $invert = false){
+        if(!$invert){
+            return  number_format($number, 2, ",", ".");
+        } else {
+            return  number_format($number, 2, ".", ",");
+        }
+    }
+    
+
     public static function die_dump($subject){
         var_dump($subject);
         die;
